@@ -6,17 +6,17 @@
  * @a: A pointer to the first element of the matrix.
  * @size: the size of the matrix.
  */
-
-void print_diagsums(int *a, int size);
+void print_diagsums(int *a, int size)
 {
-    int i, j, sum1 = 0, sum2 = 0;
-    {
-    for (i = 0; i < size; i++)
-    
-	    sum1 += *(a + (i * size) + i);
+int i;
+int sum1 = 0;
+int sum2 = 0;
 
-	    sum2 += *(a + (i * size) + (size - 1 - i));
-    }
-    printf("Sum of diagonal 1: %d\n", sum1);
-    printf("Sum of diagonal 2: %d\n", sum2);
+for (i = 0; i < size; i++)
+{
+sum1 += *(a + i * size + i);
+sum2 += *(a + i * size + (size - i - 1));
+}
+
+printf("%d,%d\n", sum1, sum2);
 }
