@@ -7,25 +7,26 @@
  */
 int is_palindrome(char *s)
 {
-	int len = 0;
-	int i = 0;
-
 	if (s == 0)
 		return 0;
 
+	int len = 0;
 	while (s[len] != '\0')
 		len++;
 
-	len--;
+	int i = 0;
+	int palindrome = 1;
 
-	while (i < len)
+	while (i < len / 2)
 	{
-		if (s[i] != s[len])
-			return 0;
+		if (s[i] != s[len - i - 1])
+		{
+			palindrome = 0;
+			break;
+		}
 
 		i++;
-		len--;
 	}
 
-	return 1;
+	return palindrome;
 }
