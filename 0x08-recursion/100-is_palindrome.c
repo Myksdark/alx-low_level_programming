@@ -5,26 +5,21 @@
  * @s: the string to find length of
  * Return: the length of s
  */
+
 int is_palindrome(char *s)
 {
-	if (s == 0)
-		return 0;
+    if (s == NULL)
+        return 0;
 
-	int len = 0;
-	while (s[len] != '\0')
-		len++;
+    int len = 0;
+    while (s[len] != '\0')
+        len++;
 
-	int i;
-	int palindrome = 1;
+    int i, j;
+    for (i = 0, j = len - 1; i < j; i++, j--) {
+        if (s[i] != s[j])
+            return 0;
+    }
 
-	for (i = 0; i < len / 2; i++)
-	{
-		if (s[i] != s[len - i - 1])
-		{
-			palindrome = 0;
-			break;
-		}
-	}
-
-	return palindrome;
+    return 1;
 }
