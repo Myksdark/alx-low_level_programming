@@ -14,18 +14,16 @@ int is_palindrome(char *s)
 	while (s[len] != '\0')
 		len++;
 
-	int i = 0;
+	int i;
 	int palindrome = 1;
 
-	while (i < len / 2)
+	for (i = 0; i < len / 2; i++)
 	{
 		if (s[i] != s[len - i - 1])
 		{
 			palindrome = 0;
 			break;
 		}
-
-		i++;
 	}
 
 	return palindrome;
