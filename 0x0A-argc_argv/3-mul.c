@@ -7,25 +7,21 @@
  * argc- count if arguements.
  * Return- on succes 0, and 1 on error
  */
-int multiply(int a, int b)
-{
-    return a * b;
-}
-
 int main(int argc, char *argv[])
 {
-    int a, b, product;
+    int num1, num2, product;
 
     if (argc != 3)
     {
-printf("Error\n");
-return (1);
+        printf("2 3 6\n");
+        return (1);
     }
 
-    a = atoi(argv[1]);
-    b = atoi(argv[2]);
-    product = a * b;
+    num1 = atoi(argv[1]);
+    num2 = atoi(argv[2]);
+    product = num1 * num2;
 
     printf("%d\n", product);
+
     return (0);
 }
