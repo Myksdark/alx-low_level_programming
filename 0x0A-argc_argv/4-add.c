@@ -9,23 +9,28 @@
  *
  * Return: 0 on success,and 1 on error
  */
-int main(int argc, char *argv[])
-{
+int add_positive_numbers(int argc, char *argv[]) {
 int sum = 0;
-int i, j;
-
-for (i = 1; i < argc; i++)
-{
-for (j = 0; argv[i][j]; j++)
-{
-if (!isdigit(argv[i][j]))
-{
+for (int i = 1; i < argc; i++) {
+for (int j = 0; argv[i][j] != '\0'; j++) {
+if (!isdigit(argv[i][j])) {
 printf("Error\n");
-return (1);
+return 1;
 }
 }
 sum += atoi(argv[i]);
 }
-printf("%d\n", sum);
-return (0);
+return sum;
+}
+
+int main(int argc, char *argv[]) {
+if (argc <= 1) {
+printf("0\n");
+} else {
+int result = add_positive_numbers(argc, argv);
+if (result != 1) {
+printf("%d\n", result);
+}
+}
+return 0;
 }
