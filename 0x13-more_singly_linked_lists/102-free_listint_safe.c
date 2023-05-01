@@ -8,24 +8,35 @@
  *
  * Return: The number of nodes that were freed if @head is NULL, returns 0
  */
-size_t free_listint_safe(listint_t **head)
+size_t free_listint_safe(listint_t **h)
 {
-size_t count = 0;
-listint_t *current, *tmp;
+size_t len = 0;
+int diff;
+listint_t *temp;
 
-if (head == 0)
-return 0;
+if (!h || !*h)
+return (0);
 
-current = *head;
-while (current != 0)
+while (*h)
 {
-tmp = current->next;
-free(current);
-current = tmp;
-count++;
+diff = *h - (*h)->next;
+if (diff > 0)
+{
+temp = (*h)->next;
+free(*h);
+*h = temp;
+len++;
+}
+else
+{
+free(*h);
+*h = 0;
+len++;
+break;
+}
 }
 
-*head = 0;
+*h = 0;
 
-return count;
+return (len);
 }
