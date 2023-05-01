@@ -1,19 +1,23 @@
 #include "lists.h"
 
 /**
- * free_listint2 - frees a listint_t list
- * @head: pointer to the first node in the list
+ * free_listint2 - Frees a listint_t list.
+ * @head: Pointer to a pointer to the first node in the list.
  *
- * Description: frees the memory allocated for a linked list of type `listint_t`.
+ * Description: Frees the memory allocated for a linked list of type listint_t.
  *
- * Returns: Nothing
+ * Return: Nothing.
  */
-void free_listint2(listint_t **head) {
+void free_listint2(listint_t **head)
+{
 listint_t *current = *head;
-while (current != 0) {
+
+while (current != NULL)
+{
 listint_t *next = current->next;
 free(current);
 current = next;
 }
-*head = 0;
+
+*head = NULL;
 }
