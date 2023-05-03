@@ -7,7 +7,7 @@
  * @h: A pointer to a pointer to the head of the list.
  *
  * This function frees a linked list of integers safely. If @h is NULL or
- * @*h is NULL, the function returns 0. Otherwise, it frees each node in
+ * *@h is NULL, the function returns 0. Otherwise, it frees each node in
  * the list and returns the number of nodes that were freed.
  *
  * Return: The number of nodes that were freed.
@@ -15,7 +15,7 @@
 size_t free_listint_safe(listint_t **h)
 {
 size_t len = 0;
-intptr_t diff;
+int diff;
 listint_t *temp;
 
 if (!h || !*h)
@@ -23,7 +23,7 @@ return (0);
 
 while (*h)
 {
-diff = (intptr_t)*h - (intptr_t)(*h)->next;
+diff = *h - (*h)->next;
 if (diff > 0)
 {
 temp = (*h)->next;
@@ -34,13 +34,13 @@ len++;
 else
 {
 free(*h);
-*h = NULL;
+*h = 0;
 len++;
 break;
 }
 }
 
-*h = NULL;
+*h = 0;
 
 return (len);
 }
